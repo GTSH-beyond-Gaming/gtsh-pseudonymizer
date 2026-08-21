@@ -449,8 +449,8 @@ class Pseudonymizer:
         if self.enable_money:
             rules.append(_MONEY_RULE)
         if self.mask_number_clusters:
-            # Das Restrisiko-Tor bleibt unveraendert fail-closed. Fuer
-            # In Remote-Kontexten werden potenziell identifizierende Zahlen aber
+            # Das Restrisiko-Tor bleibt unveraendert fail-closed. In
+            # Remote-Kontexten werden potenziell identifizierende Zahlen aber
             # bereits vorher sicher ersetzt, sodass harmlose Rechnungs-/Beleg-
             # und Registerfolgen nicht die komplette Entscheidung blockieren.
             rules.append(("NUMMER", _NUMBER_CLUSTER_RX))
@@ -473,7 +473,7 @@ class Pseudonymizer:
             right = r"(?!\w)" if term[-1].isalnum() or term[-1] == "_" else ""
             for m in re.finditer(left + re.escape(term) + right, text, re.IGNORECASE):
                 spans.append(Span(m.start(), m.end(), label, m.group(), "blockliste", 1.0))
-        # Namen-Heuristik (Anrede/Gruss) — IMMER, auch ohne NER (schliesst /feedback + RAG-Query)
+        # Namen-Heuristik (Anrede/Gruss) — IMMER, auch ohne NER.
         spans.extend(_heuristic_name_spans(text))
         # NER zuletzt (niedrigere Prioritaet als strukturierte Treffer)
         if self.ner_backend is not None:

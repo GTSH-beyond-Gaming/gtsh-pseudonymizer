@@ -2,8 +2,9 @@
 
 ## Supported versions
 
-Version `0.1.x` is an alpha integration line. Pin an exact tag or commit and run
-your own privacy-contract tests before production use.
+Version `0.2.x` is the current alpha integration line and the only line that
+receives fixes. Earlier `0.1.x` releases are unsupported. Pin an exact tag or
+commit and run your own privacy-contract tests before production use.
 
 ## Reporting
 
